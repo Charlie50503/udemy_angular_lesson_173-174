@@ -8,23 +8,23 @@ import { interval, observable, Observable, Subscription } from 'rxjs'
 })
 export class HomeComponent implements OnInit {
 
-  private firstObsSubscription : Subscription;
+  private firstObsSubscription: Subscription;
   constructor() { }
 
   ngOnInit() {
     // const customInterval$ = Observable.create(); //已被淘汰
-    const customInterval$ = new Observable<number>(observer=>{
+    const customInterval$ = new Observable<number>(observer => {
       let count = 0
-      setInterval(()=>{
+      setInterval(() => {
         count++
         observer.next(count);
-      },1000)
+      }, 1000)
     }); // 改用 new Observable()
     // this.firstObsSubscription = interval(1000).subscribe((count)=>{
     //   console.log(count)
     // })
 
-    this.firstObsSubscription = customInterval$.subscribe((count)=>{
+    this.firstObsSubscription = customInterval$.subscribe((count) => {
       console.log(count);
     })
   }
