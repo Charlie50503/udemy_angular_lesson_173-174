@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
     //   console.log(count)
     // })
 
-    customInterval$.subscribe((count)=>{
+    this.firstObsSubscription = customInterval$.subscribe((count)=>{
       console.log(count);
     })
   }
