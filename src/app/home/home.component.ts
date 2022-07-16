@@ -23,6 +23,10 @@ export class HomeComponent implements OnInit {
     // this.firstObsSubscription = interval(1000).subscribe((count)=>{
     //   console.log(count)
     // })
+
+    customInterval$.subscribe((count)=>{
+      console.log(count);
+    })
   }
 
   ngOnDestroy(): void {
