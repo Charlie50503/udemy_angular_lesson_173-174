@@ -14,7 +14,9 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     // const customInterval$ = Observable.create(); //已被淘汰
     const customInterval$ = new Observable<number>(observer=>{
-
+      setInterval(()=>{
+        observer.next();
+      },1000)
     }); // 改用 new Observable()
     // this.firstObsSubscription = interval(1000).subscribe((count)=>{
     //   console.log(count)
