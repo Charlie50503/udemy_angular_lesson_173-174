@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
         count++
         observer.next(count);
 
-        if(count == 2){
+        if(count == 5){
           observer.complete()
         }
         if(count > 3) {
