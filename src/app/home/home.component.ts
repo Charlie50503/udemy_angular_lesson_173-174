@@ -19,6 +19,9 @@ export class HomeComponent implements OnInit {
         count++
         observer.next(count);
 
+        if(count == 2){
+          observer.complete()
+        }
         if(count > 3) {
           observer.error(new Error("Count is greater 3!"))
         }
@@ -33,6 +36,9 @@ export class HomeComponent implements OnInit {
     },error=>{
       console.log("error",error);
       alert(error.message)
+    },()=>{
+      console.log("Completed!");
+
     }
     )
   }
