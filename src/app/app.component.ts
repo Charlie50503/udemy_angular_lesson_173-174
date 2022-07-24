@@ -1,3 +1,5 @@
+import { Subscription } from 'rxjs';
+import { UserService } from './user.services';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor() {}
+  constructor(
+    private userService: UserService
+  ) { }
+  userActivated = false;
 
-  ngOnInit() {}
+  subscription:Subscription;
+  ngOnInit(
+
+  ) {
+    this.subscription = this.userService.eventEmitter.subscribe((value) => {
+      this.userActivated = value
+    })
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.subscription.unsubscribe()
+  }
 }
