@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { interval, observable, Observable, Subscription } from 'rxjs'
-import { map } from "rxjs/operators"
+import { filter, map } from "rxjs/operators"
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -35,7 +35,8 @@ export class HomeComponent implements OnInit {
 
 
     this.firstObsSubscription = customInterval$.pipe(
-        map(data=>"Round " + (data + 1))
+        filter(data=> data > 0),
+        map(data=>"Round " + (data + 1)),
       ).subscribe((count) => {
         console.log(count);
       },error=>{
