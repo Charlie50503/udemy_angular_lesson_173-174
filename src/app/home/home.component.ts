@@ -32,6 +32,8 @@ export class HomeComponent implements OnInit {
     // })
 
     this.firstObsSubscription = customInterval$.subscribe((count) => {
+      console.log("Round " + (count + 1));
+
       console.log(count);
     },error=>{
       console.log("error",error);
