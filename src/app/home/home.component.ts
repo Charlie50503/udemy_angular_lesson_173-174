@@ -32,20 +32,18 @@ export class HomeComponent implements OnInit {
     //   console.log(count)
     // })
 
-    customInterval$.pipe(map(data=>{
-      return "Round " + (data + 1)
-    }))
 
-    this.firstObsSubscription = customInterval$.subscribe((count) => {
 
-      console.log(count);
-    },error=>{
-      console.log("error",error);
-      alert(error.message)
-    },()=>{
-      console.log("Completed!");
-
-    }
+    this.firstObsSubscription = customInterval$.pipe(
+        map(data=>"Round " + (data + 1))
+      ).subscribe((count) => {
+        console.log(count);
+      },error=>{
+        console.log("error",error);
+        alert(error.message)
+      },()=>{
+        console.log("Completed!");
+      }
     )
   }
 
